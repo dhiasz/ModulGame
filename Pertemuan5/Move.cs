@@ -13,7 +13,8 @@ namespace TopDown.Movement
         // [SerializeField] → tetap muncul di Inspector
         [SerializeField] private float moveSpeed;
         private Rigidbody2D body;
-        protected Vector3 currentInpunt;
+        protected Vector3 currentInput;
+        public Vector3 CurrentInput => currentInput;
 
         //Awake() dipanggil: Saat object pertama kali aktif Sebelum Start()
         private void Awake()
@@ -25,7 +26,7 @@ namespace TopDown.Movement
         private void FixedUpdate()
         {
             //Mengatur kecepatan gerak Rigidbody2D, current input Arah gerak (vector), menjaga kecepatan tetap konsisten
-            body.velocity = moveSpeed * currentInpunt * Time.fixedDeltaTime;
+            body.velocity = moveSpeed * currentInput * Time.fixedDeltaTime;
         }
 
 

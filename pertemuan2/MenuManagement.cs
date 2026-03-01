@@ -20,4 +20,15 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void NewGame(string Namascene)
+    {
+        PlayerPrefs.DeleteAll(); 
+        SceneManager.LoadScene(Namascene);
+    }
+
+    public void ContinueGame(string Namascene)
+    {
+        SceneManager.LoadScene(Namascene);
+    }
 }

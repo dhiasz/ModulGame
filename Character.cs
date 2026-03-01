@@ -12,7 +12,7 @@ public class Character
         if (hp <= 0)
         {
             hp = 0;
-            Debug.Log(GetType().Name + " kena damage: " + damage);
+            Debug.Log(GetType().Name + " ena damage: " + damage);
             Debug.Log(GetType().Name + " sisa HP: " + hp);
         }
         

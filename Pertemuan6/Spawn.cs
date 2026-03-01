@@ -1,23 +1,31 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace TopDown.Spawn
 {
     public class Spawn : MonoBehaviour
     {
-        public GameObject enemyPrefab;
-        public Transform spawnPoint;
+        [Header("Spawn Settings")]
+        [SerializeField] private GameObject enemyPrefab;
+        [SerializeField] private float spawnInterval = 2f;
 
-        void Start()
+        private void Start()
         {
-            SpawnEnemy();
+            StartCoroutine(SpawnRoutine());
         }
 
-        void SpawnEnemy()
+        private IEnumerator SpawnRoutine()
         {
-            Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            while (true)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(spawnInterval);
+            }
+        }
+
+        private void SpawnEnemy()
+        {
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         }
     }
 }
-
